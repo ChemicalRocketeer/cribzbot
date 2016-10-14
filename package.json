@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "author": "David Aaron Suddjian <aasuddjian@gmail.com>",
-  "description": "A robot that will bring about the housing singularity",
+  "description": "The robot that will bring about the housing singularity",
   "dependencies": {
     "hubot": "^2.19.0",
     "hubot-diagnostics": "0.0.1",
