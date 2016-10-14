@@ -3,8 +3,10 @@ laboriousTime = 1000*60*60*2
 module.exports = (robot) ->
   robot.hear /good morning/i, (res) ->
     ohHappyDay = new Date(robot.brain.get('ohHappyDay') || 0)
-    morningstart = Date.now() .setHours 5 0 0 0
-    morningend = Date.now() .setHours 11 0 0 0
+    morningstart = Date.now()
+    morningstart.setHours 5, 0, 0, 0
+    morningend = Date.now()
+    morningend.setHours 11, 0, 0, 0
     now = Date.now()
     if now > morningstart && now < morningend && ohHappyDay < now - laboriousTime
       #robot.brain.set 'ohHappyDay', now
