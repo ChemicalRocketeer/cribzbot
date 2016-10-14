@@ -1,7 +1,7 @@
 module.exports = (robot) ->
   robot.listen(
     (message) ->
-      message.user.name is 'slackbot' and Math.random() < 0.5
+      message.user.name is 'slackbot' and Math.random() < 0.05
     (res) ->
       if true
         diss = [
