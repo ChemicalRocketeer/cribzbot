@@ -9,7 +9,7 @@ module.exports = (robot) ->
     morningend.setHours 11, 0, 0, 0
     now = new Date()
     if now > morningstart && now < morningend && ohHappyDay < now - laboriousTime
-      #robot.brain.set 'ohHappyDay', now
+      robot.brain.set 'ohHappyDay', now
       mornin = [
         'Hey there!',
         'Beautiful day for some computation!',
