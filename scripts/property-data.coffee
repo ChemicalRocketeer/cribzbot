@@ -6,7 +6,7 @@ maxMsgLength = 3850 # it's actually 4k but just to be safe
 
 module.exports = (robot) ->
 
-  senddata: (res, id, url, beckoned) ->
+  senddata = (res, id, url, beckoned) ->
     url ?= 'https://campuscribz.com/listings/'
     robot.http(url + id)
       .header('Accept', 'application/json')
@@ -36,11 +36,11 @@ module.exports = (robot) ->
         stringy = JSON.stringify data, null, 2
 
         if stringy.length > maxMsgLength
-          return @uploadFile res, data, stringy
+          return uploadFile res, data, stringy
         else
-          return @sendMessage res, data, stringy
+          return sendMessage res, data, stringy
 
-  sendMessage: (res, data, stringy) ->
+  sendMessage = (res, data, stringy) ->
     # separate into chunks to get around post size limits
     stringy = JSON.stringify data, null, 2
     lines = stringy.split(/[\n\r]+/g)
@@ -59,7 +59,7 @@ module.exports = (robot) ->
     messages.reverse().forEach (msg) ->
       res.send msg
 
-  uploadFile: (res, data, stringy) ->
+  uploadFile = (res, data, stringy) ->
     payload = JSON.stringify({
       token: process.env.HUBOT_SLACK_TOKEN,
       filetype: 'javascript',
@@ -81,7 +81,7 @@ module.exports = (robot) ->
     id = res.match[3]
     if subdomain is 'dev' or subdomain is '2120'
       res.send 'I can\'t reach that data because the superSignin is in the way, but I\'ll see if I can find it on the live site.'
-      return @senddata res, id, 'https://campuscribz.com/listings/', true
+      return senddata res, id, 'https://campuscribz.com/listings/', true
     else if subdomain is 'staging'
       url = 'https://staging.campuscribz.com/listings/'
-    @senddata res, id, url, true
+    senddata res, id, url, true
