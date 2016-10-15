@@ -64,7 +64,6 @@ module.exports = (robot) ->
       res.send msg
 
   uploadFile = (res, data, stringy) ->
-
     payload = JSON.stringify({
       token: process.env.HUBOT_SLACK_TOKEN,
       filetype: 'javascript',
@@ -75,11 +74,10 @@ module.exports = (robot) ->
       ]
     })
     robot.http('https://slack.com/api/files.upload')
-      .header('Content-Type', 'application/json')
+      .header('Content-Type', 'application/json; charset=utf-8')
       .post(payload) (err, response, body) ->
         console.log response
         console.log body
-        console.log typeof process.env.HUBOT_SLACK_TOKEN
         if err
           return sendMessage res, data, stringy
 
