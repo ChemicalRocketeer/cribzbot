@@ -18,9 +18,13 @@ module.exports = (robot) ->
         try
           data = JSON.parse(body)
         catch err
-          return beckoned ? res.send "I tried to get json but it sent back something else!"
+          if beckoned
+            res.send "I tried to get json but it sent back something else!"
+          return
         if data.status is 404
-          return beckoned ? res.send "I couldn't find that listing anywhere. Please don't be mad."
+          if beckoned
+            res.send "I couldn't find that listing anywhere. Please don't be mad."
+          return
         stringy = JSON.stringify data, null, 2
 
         if stringy.length > maxMsgLength
@@ -63,7 +67,7 @@ module.exports = (robot) ->
     payload = JSON.stringify({
       token: process.env.HUBOT_SLACK_TOKEN,
       filetype: 'javascript',
-      filename: 'listing ' + id + ' - ' + Date.now() + '.json',
+      filename: 'listing ' + data.id + ' - ' + Date.now() + '.json',
       content: stringy,
       channels: [
         res.message.room
