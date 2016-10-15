@@ -1,6 +1,5 @@
 [
   "scripts/goodmorning",
   "scripts/slackbot-diss",
-  "scripts/property-data",
-  "scripts/abstract"
+  "scripts/property-data"
 ]
