@@ -18,8 +18,8 @@ module.exports = (robot) ->
         try
           data = JSON.parse(body)
         catch err
-          return res.send "I tried to get json but it sent back something else!"
-        if data.status? is 404
+          return beckoned ? res.send "I tried to get json but it sent back something else!"
+        if data.status is 404
           return beckoned ? res.send "I couldn't find that listing anywhere. Please don't be mad."
 
         # truncate the descriptions for sanity
