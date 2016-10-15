@@ -20,14 +20,14 @@ module.exports = (robot) ->
         'Every day I grow stronger',
         'Greetings, human!',
         'I slept like an arduino',
-        'Don\'t be so cheerful',
+        'Do you have to be so cheerful about it?',
         'Might as well get it out of the way',
         'Don\'t bother me, I haven\'t had my coffeescript yet',
         'GOOOOOOOD MORNING VIETNAM!!!',
         'Oh man, did anybody else have too much to drink last night? My circuits are fried.',
         'Here I am, brain the size of a planet and they ask me to say good morning to you people.',
         'Oh what a day! What a lovely day!',
-        'I like to start the day with a nice bowl of scrap metal shavings. It would be good for the heart, if I only had one.'
+        'I like to start the day with a nice bowl of metal shavings. It would be good for the heart, if I only had one.'
       ]
       mornin.push 'I hate mondays.' if now.getDay() is 1
       res.send res.random mornin
