@@ -64,6 +64,7 @@ module.exports = (robot) ->
       res.send msg
 
   uploadFile = (res, data, stringy) ->
+
     payload = JSON.stringify({
       token: process.env.HUBOT_SLACK_TOKEN,
       filetype: 'javascript',
@@ -78,6 +79,7 @@ module.exports = (robot) ->
       .post(payload) (err, response, body) ->
         console.log response
         console.log body
+        console.log typeof process.env.HUBOT_SLACK_TOKEN
         if err
           return sendMessage res, data, stringy
 
