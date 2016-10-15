@@ -75,7 +75,7 @@ module.exports = (robot) ->
     })
     robot.http('https://slack.com/api/files.upload')
       .header('Content-Type', 'application/json')
-      .post (payload) (err, response, body) ->
+      .post(payload) (err, response, body) ->
         if err
           return sendMessage res, data, stringy
 
