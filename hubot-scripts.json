@@ -1,4 +1,5 @@
 [
   "scripts/goodmorning",
-  "scripts/slackbot-diss"
+  "scripts/slackbot-diss",
+  "scripts/property-data"
 ]
