@@ -28,7 +28,7 @@ module.exports = (robot) ->
         uploadFile res, data, stringy
 
   uploadFile = (res, data, stringy) ->
-    title = encodeURI "Listing #{data.id} - #{Date.now()}"
+    title = encodeURI "Listing #{data.id} - #{new Date().toDateString()}"
     comment = encodeURI "Here's the data from that listing."
     token = process.env.HUBOT_SLACK_TOKEN
     payload = "token=#{token}&filetype=javascript&title=#{title}&initial_comment=#{comment}&content=#{encodeURI(stringy)}&channels=#{res.message.room}"
