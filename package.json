@@ -6,7 +6,8 @@
   "description": "The robot that will bring about the housing singularity",
   "scripts": {
     "start": "env-cmd ./.env bin/hubot -a slack",
-    "deploy": "git push heroku master"
+    "deploy": "git push heroku master",
+    "watch": "heroku logs -t"
   },
   "dependencies": {
     "hubot": "^2.19.0",
