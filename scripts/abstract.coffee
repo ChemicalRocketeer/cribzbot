@@ -15,7 +15,10 @@
 
 module.exports = (robot) ->
   robot.respond /(abs|abstract|explain|what'?s the deal with) (.+)/i, (res) ->
-    abstract_url = "http://api.duckduckgo.com/?format=json&q=#{encodeURIComponent(res.match[2])}"
+    query = res.match[2]
+    if query.toLowerCase() is 'campuscribz'
+      return res.send 'Ah, my birthplace.'
+    abstract_url = "http://api.duckduckgo.com/?format=json&q=#{encodeURIComponent(query)}"
     res.http(abstract_url)
       .header('User-Agent', 'Hubot Abstract Script')
       .get() (err, _, body) ->
