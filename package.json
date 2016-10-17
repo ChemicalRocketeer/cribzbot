@@ -5,7 +5,8 @@
   "author": "David Aaron Suddjian <aasuddjian@gmail.com>",
   "description": "The robot that will bring about the housing singularity",
   "scripts": {
-    "start": "env-cmd ./.env bin/hubot -a slack"
+    "start": "env-cmd ./.env bin/hubot -a slack",
+    "deploy": "git push heroku master"
   },
   "dependencies": {
     "hubot": "^2.19.0",
