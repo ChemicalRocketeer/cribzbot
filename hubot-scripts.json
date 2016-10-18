@@ -3,5 +3,6 @@
   "scripts/slackbot-diss",
   "scripts/property-data",
   "scripts/mistakes",
-  "scripts/abstract"
+  "scripts/abstract",
+  "scripts/dilbert-me"
 ]
