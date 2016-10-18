@@ -11,6 +11,8 @@
 #   hubot ^ - Responds to the above message as if it was a command (as many messages up as there are ^'s)
 #
 # Notes:
+#   Cribzbot will not count its own posts when looking back, so that can lead to weird results
+#
 #   CaptainPicard:  "Let's try out our new robot companion!"
 #        JoePesci:  "what is the answer to the ultimate question of life, the universe, and everything?"
 #        JoePesci:  "crap, it didn't work..."
@@ -60,7 +62,6 @@ module.exports = (robot) ->
     process.nextTick () ->
       message = new TextMessage(res.message.user, "#{robot.name}: #{originalMsg}")
       lastEmitted = message
-      oneForTheHistoryBooks message
       robot.receive message
 
 
