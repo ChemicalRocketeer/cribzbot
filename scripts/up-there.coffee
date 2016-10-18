@@ -1,5 +1,5 @@
 # Description:
-#   Forces a response to previous messages that were missed because they didn't explicity invoke hubot
+#   Direct Hubot's attention to something it missed.
 #
 # Dependencies:
 #   None
@@ -8,7 +8,7 @@
 #   None
 #
 # Commands:
-#   hubot ^ - Responds to the above message (as many messages up as there are ^'s)
+#   hubot ^ - Responds to the above message as if it was a command (as many messages up as there are ^'s)
 #
 # Notes:
 #   CaptainPicard:  "Let's try out our new robot companion!"
