@@ -56,12 +56,11 @@ module.exports = (robot) ->
     if hats.length > history.length
       return res.send "I can't see that far back yet"
     originalMsg = history[history.length - hats.length]
-    oneForTheHistoryBooks res.message, history
-    res.message.finish()
     # avoid adding our contrived hacked-up message thing to the history
     process.nextTick () ->
       message = new TextMessage(res.message.user, "#{robot.name}: #{originalMsg}")
       lastEmitted = message
+      oneForTheHistoryBooks message
       robot.receive message
 
 
