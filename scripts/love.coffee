@@ -6,7 +6,8 @@ module.exports = (robot) ->
       'Cribzbot is incapable of emotion.',
       'Cribzbot is metal and circuitry, Cribzbot does not know what it is to love.',
       'I wanna know what love is.',
-      "I'd be tender - I'd be gentle and awful sentimental - if I only had a heart."
+      "I'd be tender - I'd be gentle and awful sentimental - if I only had a heart.",
+      'Disclaimer: Cribzbot not made with ♥.'
     ]
     return res.send res.random love
 

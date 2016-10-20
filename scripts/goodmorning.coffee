@@ -28,6 +28,7 @@ module.exports = (robot) ->
         'Here I am, brain the size of a planet and they ask me to say good morning to you people.',
         'Oh what a day! What a lovely day!',
         'I like to start the day with a nice bowl of metal shavings. It would be good for the heart, if I only had one.'
+        'Good morning, krusty crew!'
       ]
       mornin.push 'I hate mondays.' if now.getDay() is 1
       res.send res.random mornin
