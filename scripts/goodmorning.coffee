@@ -53,3 +53,5 @@ module.exports = (robot) ->
   robot.hear /hump day/i, (res) ->
     if (new Date()).getDay() is 3
       res.send 'No, stop it.'
+    else
+      res.send 'Come on, It\'s not even wednesday.'
