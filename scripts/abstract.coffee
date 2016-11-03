@@ -16,6 +16,18 @@
 module.exports = (robot) ->
   robot.respond /(abs|abstract|explain|what'?s the deal with) (.+)/i, (res) ->
     query = res.match[2]
+    if /cribzbot|(yo)?urself/i.test query
+      self = [
+        'I pass butter.',
+        'I exist to serve mankind.',
+        'Just a lowly chatbot',
+        'I\'m your peppy personal assistant.'
+      ]
+      res.send res.random self
+      return setTimeout (() ->
+          if Math.random() < 0.4
+            res.send '*For now.*'
+        ), 4000
     if /^campus\s*cribz$/i.test query
       return res.send 'Ah, my birthplace.'
     abstract_url = "http://api.duckduckgo.com/?format=json&q=#{encodeURIComponent(query)}"
