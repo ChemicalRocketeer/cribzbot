@@ -28,8 +28,8 @@ module.exports = (robot) ->
         uploadFile res, data, stringy
 
   uploadFile = (res, data, stringy) ->
-    title = encodeURI "Listing #{data.id} - #{new Date().toDateString()}"
-    comment = encodeURI "Here's the data from that listing."
+    title = encodeURIComponent "Listing #{data.id} - #{new Date().toDateString()}"
+    comment = encodeURIComponent "Here's the data from that listing."
     token = process.env.HUBOT_SLACK_TOKEN
     payload = "token=#{token}&filetype=javascript&title=#{title}&initial_comment=#{comment}&content=#{encodeURIComponent(stringy)}&channels=#{res.message.room}"
     robot.http('https://slack.com/api/files.upload')
