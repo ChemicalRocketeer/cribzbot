@@ -31,16 +31,14 @@ module.exports = (robot) ->
     datastr = encodeURIComponent(JSON.stringify data, null, 2)
     token = process.env.HUBOT_SLACK_TOKEN
     payload = "token=#{token}&filetype=javascript&title=#{title}&initial_comment=#{comment}&content=#{datastr}&channels=#{res.message.room}"
-    request = robot.http('https://slack.com/api/files.upload')
+    robot.http('https://slack.com/api/files.upload')
       .header('Content-Type', 'application/x-www-form-urlencoded; charset=utf-8')
-    if user
-      request.header('CC-supersignin-username', user)
-    if pass
-      request.header('CC-supersignin-password', pass)
-    request.post(payload) (err, response, body) ->
-      if err and beckoned
-        console.error 'ERROR ERROR CRITICAL CORE LOGIC BREACH', body
-        res.send "DOES NOT COMPUTE"
+      .header('CC-supersignin-username', user)
+      .header('CC-supersignin-password', pass)
+      .post(payload) (err, response, body) ->
+        if err and beckoned
+          console.error 'ERROR ERROR CRITICAL CORE LOGIC BREACH', body
+          res.send "DOES NOT COMPUTE"
 
   # this one only runs if you ask it to
   robot.respond /https?:\/\/(?:(www|dev|staging|2120)\.)?campuscribz\.com\/listings\/((?:[-\w\+]){4,})/i, (res) ->
