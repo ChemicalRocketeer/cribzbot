@@ -42,9 +42,11 @@ module.exports = (robot) ->
           res.send "DOES NOT COMPUTE"
 
   # this one only runs if you ask it to
-  robot.respond /https?:\/\/(?:(www|dev|staging|2120)\.)?campuscribz\.com\/listings\/((?:[-\w\+]){4,})/i, (res) ->
-    subdomain = res.match[1]
-    id = res.match[2]
+  robot.respond /(https?:\/\/(?:(www|dev|staging|2120)\.)?campuscribz\.com\/listings\/((?:[-\w\+]){4,}))/i, (res) ->
+    console.log(res.match)
+    url = res.match[1]
+    subdomain = res.match[2]
+    id = res.match[3]
     if subdomain is 'dev'
       username = process.env.SUPERSIGNIN_DEV_USERNAME
       password = process.env.SUPERSIGNIN_DEV_PASSWORD
