@@ -7,7 +7,6 @@ module.exports = (robot) ->
       .header('CC-supersignin-username', user || '')
       .header('CC-supersignin-password', pass || '')
       .get() (err, response, body) ->
-        console.log(response)
         if err
           console.error(err)
           if beckoned
