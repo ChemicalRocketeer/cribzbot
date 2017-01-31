@@ -4,8 +4,8 @@ module.exports = (robot) ->
     url ?= 'https://campuscribz.com/listings/'
     robot.http(url + id)
       .header('Accept', 'application/json')
-      .header('CC-supersignin-username', user)
-      .header('CC-supersignin-password', pass)
+      .header('CC-supersignin-username', user || '')
+      .header('CC-supersignin-password', pass || '')
       .get() (err, response, body) ->
         if err
           console.error(err)
@@ -38,12 +38,11 @@ module.exports = (robot) ->
       .header('Content-Type', 'application/x-www-form-urlencoded; charset=utf-8')
       .post(payload) (err, response, body) ->
         if err and beckoned
-          console.error 'ERROR ERROR CRITICAL CORE LOGIC BREACH', body
+          console.error 'ERROR ERROR CRITICAL CORE LOGIC BREACH', err,  body
           res.send "DOES NOT COMPUTE"
 
   # this one only runs if you ask it to
   robot.respond /(https?:\/\/(?:(www|dev|staging|2120)\.)?campuscribz\.com\/listings\/((?:[-\w\+]){4,}))/i, (res) ->
-    console.log(res.match)
     url = res.match[1]
     subdomain = res.match[2]
     id = res.match[3]
@@ -53,4 +52,4 @@ module.exports = (robot) ->
     else if subdomain is '2120'
       username = process.env.SUPERSIGNIN_2120_USERNAME
       password = process.env.SUPERSIGNIN_2120_PASSWORD
-    senddata res, id, res.match[0], username, password, true
+    senddata res, id, url, username, password, true
