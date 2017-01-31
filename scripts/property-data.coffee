@@ -1,8 +1,8 @@
 module.exports = (robot) ->
 
-  senddata = (res, id, url, user, pass, beckoned) ->
+  senddata = (res, url, user, pass, beckoned) ->
     url ?= 'https://campuscribz.com/listings/'
-    robot.http(url + id)
+    robot.http(url)
       .header('Accept', 'application/json')
       .header('CC-supersignin-username', user || '')
       .header('CC-supersignin-password', pass || '')
@@ -46,11 +46,10 @@ module.exports = (robot) ->
   robot.respond /(https?:\/\/(?:(www|dev|staging|2120)\.)?campuscribz\.com\/listings\/((?:[-\w\+]){4,}))/i, (res) ->
     url = res.match[1]
     subdomain = res.match[2]
-    id = res.match[3]
     if subdomain is 'dev'
       username = process.env.SUPERSIGNIN_DEV_USERNAME
       password = process.env.SUPERSIGNIN_DEV_PASSWORD
     else if subdomain is '2120'
       username = process.env.SUPERSIGNIN_2120_USERNAME
       password = process.env.SUPERSIGNIN_2120_PASSWORD
-    senddata res, id, url, username, password, true
+    senddata res, url, username, password, true
