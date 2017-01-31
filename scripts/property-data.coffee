@@ -4,8 +4,11 @@ module.exports = (robot) ->
     url ?= 'https://campuscribz.com/listings/'
     robot.http(url + id)
       .header('Accept', 'application/json')
+      .header('CC-supersignin-username', user)
+      .header('CC-supersignin-password', pass)
       .get() (err, response, body) ->
         if err
+          console.error(err)
           if beckoned
             res.send "DOES NOT COMPUTE"
           return
@@ -33,8 +36,6 @@ module.exports = (robot) ->
     payload = "token=#{token}&filetype=javascript&title=#{title}&initial_comment=#{comment}&content=#{datastr}&channels=#{res.message.room}"
     robot.http('https://slack.com/api/files.upload')
       .header('Content-Type', 'application/x-www-form-urlencoded; charset=utf-8')
-      .header('CC-supersignin-username', user)
-      .header('CC-supersignin-password', pass)
       .post(payload) (err, response, body) ->
         if err and beckoned
           console.error 'ERROR ERROR CRITICAL CORE LOGIC BREACH', body
