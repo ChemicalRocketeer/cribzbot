@@ -1,8 +1,9 @@
 laboriousTime = 1000*60*60*2
 
 module.exports = (robot) ->
+
   robot.hear /good morning/i, (res) ->
-    return unless Math.random() > 0.3
+    return unless robot.shouldShutUp()
     ohHappyDay = new Date(robot.brain.get('ohHappyDay') || 0)
     now = new Date()
     if ismorning(now) && ohHappyDay < now - laboriousTime
@@ -76,15 +77,15 @@ postmsg = (res, msg) ->
       msg = msg[0]
     res.send msg
 
-randelay = (then) ->
-  delay = Math.random() * 4000 + 500
-  setTimeout (() ->
-      then()
+  randelay = (next) ->
+    delay = Math.random() * 4000 + 500
+    setTimeout ( ->
+      return next()
     ), delay
 
-ismorning = (time) ->
-  morningstart = new Date(time)
-  morningstart.setHours 5, 0, 0, 0
-  morningend = new Date(time)
-  morningend.setHours 11, 0, 0, 0
-  return now > morningstart && now < morningend
+  ismorning = (time) ->
+    morningstart = new Date(time)
+    morningstart.setHours 5, 0, 0, 0
+    morningend = new Date(time)
+    morningend.setHours 11, 0, 0, 0
+    return now > morningstart && now < morningend
