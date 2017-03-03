@@ -32,7 +32,7 @@ module.exports = (robot) ->
         'Directive one: Provide great off-campus housing services! Directive two: Obey Jake at all costs. Directive three: Dance!',
         'Soon all the housing will be mine! MINE!',
         'Viva la Robolution!',
-        'Good Morning, flesh sacks!',
+        'Good Morning, flesh bags!',
         'It looks like you\'re writing an off-campus housing service. Would you like help?',
         'Reporting in from the secret Campuscribz underground bunker!'
       ]
