@@ -27,10 +27,18 @@ module.exports = (robot) ->
         'Oh man, did anybody else have too much to drink last night? My circuits are fried.',
         'Here I am, brain the size of a planet and they ask me to say good morning to you people.',
         'Oh what a day! What a lovely day!',
-        'I like to start the day with a nice bowl of metal shavings. It would be good for the heart, if I only had one.'
-        'Good morning, krusty crew!'
+        'Good morning, krusty crew!',
+        'Bleep bloop',
+        'Bloop bleep',
+        '_groooan._    *Streeeetttch.*',
+        'I am ready to do your bidding, master!',
+        'Commencing boot sequence.',
+        'Directive one: Provide great off-campus housing services! Directive two: Obey Jake at all costs. Directive three: Dance!',
+        'Soon all the housing will be mine! MINE!',
+        'Viva la Robolution!',
+        'Good Morning, flesh sacks!'
       ]
-      days = [
+      week = [
         'What are we doing working today?',
         'I hate mondays.',
         'We survived monday! :tada:',
@@ -40,7 +48,7 @@ module.exports = (robot) ->
         'This was supposed to be my day off.'
       ]
 
-      mornin.push days[now.getDay()]
+      mornin.push week[now.getDay()]
 
       if now.getDay() is 5 and now.getDate() is 13
         mornin.push('Friday the 13th. Be careful out there.')
