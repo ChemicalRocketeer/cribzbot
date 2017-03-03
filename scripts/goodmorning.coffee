@@ -2,7 +2,7 @@ laboriousTime = 1000*60*60*2
 
 module.exports = (robot) ->
   robot.hear /good morning/i, (res) ->
-    return unless Math.random() > 0.5
+    return unless Math.random() > 0.3
     ohHappyDay = new Date(robot.brain.get('ohHappyDay') || 0)
     morningstart = new Date()
     morningstart.setHours 5, 0, 0, 0
