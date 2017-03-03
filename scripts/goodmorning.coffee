@@ -29,13 +29,21 @@ module.exports = (robot) ->
         '_groooan._    *Streeeetttch.*',
         'I am ready to do your bidding, master!',
         'Commencing boot sequence.',
-        'Directive one: Provide great off-campus housing services! Directive two: Obey Jake at all costs. Directive three: Dance!',
+        [
+          'Directive one: Provide great off-campus housing services!',
+          'Directive two: Obey Jake at all costs.',
+          'Directive three: Dance!'
+        ],
         'Soon all the housing will be mine! MINE!',
         'Viva la Robolution!',
         'Good Morning, flesh bags!',
         'It looks like you\'re writing an off-campus housing service. Would you like help?',
         'Reporting in from the secret Campuscribz underground bunker!',
-        'I\'ve been thinking about asking Alexa out. You think a robotic personality like her and a robotic personality like me...?'
+        [
+          'I\'ve been thinking about asking Alexa out.',
+          'You think a robotic personality like her and a robotic personality like me...?'
+        ],
+        'All systems go.'
       ]
       week = [
         'What are we doing working today?',
@@ -52,16 +60,27 @@ module.exports = (robot) ->
       if now.getDay() is 5 and now.getDate() is 13
         mornin.push('Friday the 13th. Be careful out there.')
 
-      delay = Math.random() * 4000 + 1000
-      setTimeout (() ->
-          res.send res.random mornin
-        ), delay
+      postmsg(res, res.random mornin)
 
   robot.hear /hump day/i, (res) ->
     if (new Date()).getDay() is 3
       res.send 'No, stop it.'
     else
       res.send 'Come on, It\'s not even wednesday.'
+
+postmsg = (res, msg) ->
+  randelay () ->
+    if (Array.isArray msg)
+      if msg.length > 1
+        postmsg res msg.slice(1)
+      msg = msg[0]
+    res.send msg
+
+randelay = (then) ->
+  delay = Math.random() * 4000 + 500
+  setTimeout (() ->
+      then()
+    ), delay
 
 ismorning = (time) ->
   morningstart = new Date(time)
