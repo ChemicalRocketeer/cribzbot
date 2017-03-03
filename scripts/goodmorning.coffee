@@ -34,7 +34,8 @@ module.exports = (robot) ->
         'Viva la Robolution!',
         'Good Morning, flesh bags!',
         'It looks like you\'re writing an off-campus housing service. Would you like help?',
-        'Reporting in from the secret Campuscribz underground bunker!'
+        'Reporting in from the secret Campuscribz underground bunker!',
+        'I\'ve been thinking about asking Alexa out. You think a robotic personality like her and a robotic personality like me...?'
       ]
       week = [
         'What are we doing working today?',
