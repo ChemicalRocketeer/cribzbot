@@ -53,7 +53,7 @@ module.exports = (robot) ->
       if now.getDay() is 5 and now.getDate() is 13
         mornin.push('Friday the 13th. Be careful out there.')
 
-      delay = Math.random() * 3000 + 500
+      delay = Math.random() * 4000 + 1000
       setTimeout (() ->
           res.send res.random mornin
         ), delay
