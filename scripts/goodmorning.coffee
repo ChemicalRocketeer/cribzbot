@@ -4,12 +4,8 @@ module.exports = (robot) ->
   robot.hear /good morning/i, (res) ->
     return unless Math.random() > 0.3
     ohHappyDay = new Date(robot.brain.get('ohHappyDay') || 0)
-    morningstart = new Date()
-    morningstart.setHours 5, 0, 0, 0
-    morningend = new Date()
-    morningend.setHours 11, 0, 0, 0
     now = new Date()
-    if now > morningstart && now < morningend && ohHappyDay < now - laboriousTime
+    if ismorning(now) && ohHappyDay < now - laboriousTime
       robot.brain.set 'ohHappyDay', now
       mornin = [
         'Hey there!',
@@ -65,3 +61,10 @@ module.exports = (robot) ->
       res.send 'No, stop it.'
     else
       res.send 'Come on, It\'s not even wednesday.'
+
+ismorning = (time) ->
+  morningstart = new Date(time)
+  morningstart.setHours 5, 0, 0, 0
+  morningend = new Date(time)
+  morningend.setHours 11, 0, 0, 0
+  return now > morningstart && now < morningend
