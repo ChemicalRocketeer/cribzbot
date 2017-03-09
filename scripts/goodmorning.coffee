@@ -69,13 +69,13 @@ module.exports = (robot) ->
     else
       res.send 'Come on, It\'s not even wednesday.'
 
-postmsg = (res, msg) ->
-  randelay () ->
-    if (Array.isArray msg)
-      if msg.length > 1
-        postmsg res msg.slice(1)
-      msg = msg[0]
-    res.send msg
+  postmsg = (res, msg) ->
+    randelay () ->
+      if (Array.isArray msg)
+        if msg.length > 1
+          postmsg res msg.slice(1)
+        msg = msg[0]
+      res.send msg
 
   randelay = (next) ->
     delay = Math.random() * 4000 + 500
@@ -88,4 +88,4 @@ postmsg = (res, msg) ->
     morningstart.setHours 5, 0, 0, 0
     morningend = new Date(time)
     morningend.setHours 11, 0, 0, 0
-    return now > morningstart && now < morningend
+    return time > morningstart && time < morningend
