@@ -44,7 +44,9 @@ module.exports = (robot) ->
           'I\'ve been thinking about asking Alexa out.',
           'You think a robotic personality like her and a robotic personality like me...?'
         ],
-        'All systems go.'
+        'All systems go.',
+        'Launching the missiles!',
+        'Avengers assemble!'
       ]
       week = [
         'What are we doing working today?',
